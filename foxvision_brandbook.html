@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoxVision AI — Брендбук</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #09090F;
+    --surface:   #111119;
+    --surface2:  #18181F;
+    --border:    #2A2A3A;
+    --violet:    #7C3AED;
+    --violet-mid:#9D5CF6;
+    --violet-light:#C4A0FF;
+    --violet-glow:rgba(124,58,237,0.18);
+    --white:     #F2F0FF;
+    --grey:      #7A7A9A;
+    --grey-light:#B0AECB;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+  .cover::before {
+    content:'';
+    position:absolute;
+    width:700px; height:700px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%);
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .cover-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--violet-light);
+    margin-bottom: 32px;
+  }
+  .cover-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--white);
+  }
+  .cover-title span {
+    color: var(--violet-mid);
+  }
+  .cover-sub {
+    margin-top: 24px;
+    font-size: 17px;
+    color: var(--grey-light);
+    font-weight: 300;
+    max-width: 480px;
+  }
+  .cover-line {
+    margin: 48px auto 0;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--violet-mid), transparent);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label {
+    font-family:'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--violet-light);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--white);
+  }
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  p { color: var(--grey-light); margin-bottom: 16px; }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  /* COLORS */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .color-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .color-swatch {
+    height: 100px;
+  }
+  .color-info {
+    background: var(--surface);
+    padding: 14px 16px;
+  }
+  .color-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .color-hex {
+    font-size: 12px;
+    color: var(--grey);
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .color-role {
+    font-size: 11px;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  /* TYPOGRAPHY SHOWCASE */
+  .typo-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 20px;
+  }
+  .typo-sample-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .typo-sample-body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: var(--grey-light);
+    margin-top: 16px;
+    font-weight: 400;
+  }
+  .typo-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .typo-meta-item label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 4px;
+  }
+  .typo-meta-item span {
+    font-size: 13px;
+    color: var(--violet-light);
+    font-weight: 600;
+  }
+
+  /* TONE TAGS */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .tag {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .tag-yes { background: rgba(124,58,237,0.2); color: var(--violet-light); border: 1px solid rgba(124,58,237,0.4); }
+  .tag-no  { background: rgba(255,255,255,0.04); color: var(--grey); border: 1px solid var(--border); text-decoration: line-through; }
+
+  /* DO / DON'T */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media(max-width:600px){ .do-dont{ grid-template-columns:1fr; } }
+  .do-block, .dont-block {
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .do-block   { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.3); }
+  .dont-block { background: rgba(255,80,80,0.06); border: 1px solid rgba(255,80,80,0.2); }
+  .do-block .block-label   { color: var(--violet-light); }
+  .dont-block .block-label { color: #FF6B6B; }
+  .block-label {
+    font-family:'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .do-block ul, .dont-block ul {
+    list-style: none;
+  }
+  .do-block li, .dont-block li {
+    font-size: 14px;
+    color: var(--grey-light);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .do-block li::before   { content: '✓ '; color: var(--violet-light); font-weight: 700; }
+  .dont-block li::before { content: '✗ '; color: #FF6B6B; font-weight: 700; }
+
+  /* UTP BOX */
+  .utp-box {
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(196,160,255,0.05));
+    border: 1px solid rgba(124,58,237,0.4);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .utp-box::before {
+    content:'';
+    position:absolute;
+    width:300px; height:300px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%);
+    top:-100px; right:-100px;
+    pointer-events:none;
+  }
+  .utp-quote {
+    font-family:'Syne', sans-serif;
+    font-size: clamp(18px, 3.5vw, 26px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+    position: relative;
+  }
+  .utp-quote em {
+    color: var(--violet-light);
+    font-style: normal;
+  }
+  .utp-use {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .utp-badge {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border);
+    color: var(--grey-light);
+  }
+
+  /* LOGO NOTE */
+  .logo-note {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .logo-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(124,58,237,0.2);
+    border: 1px solid rgba(124,58,237,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 60px 40px;
+    color: var(--grey);
+    font-size: 13px;
+  }
+  .footer strong {
+    color: var(--violet-light);
+  }
+
+  /* DIVIDER */
+  .vdivider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--violet), transparent);
+    margin: 48px 0;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Брендбук · версия 1.0</div>
+  <h1 class="cover-title">Fox<span>Vision</span> AI</h1>
+  <p class="cover-sub">Руководство по фирменному стилю — цвета, шрифты, тон общения, логотип</p>
+  <div class="cover-line"></div>
+</div>
+
+<!-- 1. О БРЕНДЕ -->
+<section>
+  <div class="section-label">01 — О бренде</div>
+  <h2>Кто мы</h2>
+  <div class="card">
+    <p style="font-size:16px; color:var(--white); font-weight:500;">FoxVision AI — сервис AI-обработки фотографий через Telegram-бот. Мы делаем профессиональный результат доступным каждому: быстро, дёшево и без лишних сложностей.</p>
+    <div class="vdivider" style="margin:24px 0;"></div>
+    <div class="card-grid">
+      <div>
+        <h3>Миссия</h3>
+        <p>Дать каждой женщине возможность иметь красивые фото — без фотографа, фотошопа и больших затрат.</p>
+      </div>
+      <div>
+        <h3>Аудитория</h3>
+        <p>Женщины 30+. Хотят выглядеть хорошо, ценят удобство и скорость, не хотят разбираться в сложных инструментах.</p>
+      </div>
+      <div>
+        <h3>Платформы</h3>
+        <p>Telegram (@foxvisionai_bot), ВКонтакте (vk.com/foxvisionai), сайт (foxvision-landing).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. УТП -->
+<section>
+  <div class="section-label">02 — УТП</div>
+  <h2>Главная фраза бренда</h2>
+  <div class="utp-box">
+    <div class="utp-quote">«Хочешь красивое фото — но нет фотографа, <em>времени и бюджета?</em><br>FoxVision сделает это за тебя за пару минут»</div>
+    <div class="utp-use">
+      <span class="utp-badge">Рекламные посты</span>
+      <span class="utp-badge">Таргет</span>
+      <span class="utp-badge">Сторис</span>
+      <span class="utp-badge">Первый экран сайта</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ЦВЕТА -->
+<section>
+  <div class="section-label">03 — Цветовая палитра</div>
+  <h2>Цвета</h2>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#09090F;border-bottom:1px solid #2A2A3A;"></div>
+      <div class="color-info">
+        <div class="color-name">Midnight</div>
+        <div class="color-hex">#09090F</div>
+        <div class="color-role">Основной фон</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#18181F;"></div>
+      <div class="color-info">
+        <div class="color-name">Deep Surface</div>
+        <div class="color-hex">#18181F</div>
+        <div class="color-role">Карточки, панели</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#7C3AED;"></div>
+      <div class="color-info">
+        <div class="color-name">Fox Violet</div>
+        <div class="color-hex">#7C3AED</div>
+        <div class="color-role">Основной акцент</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#9D5CF6;"></div>
+      <div class="color-info">
+        <div class="color-name">Violet Mid</div>
+        <div class="color-hex">#9D5CF6</div>
+        <div class="color-role">Градиенты, hover</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C4A0FF;"></div>
+      <div class="color-info">
+        <div class="color-name">Violet Light</div>
+        <div class="color-hex">#C4A0FF</div>
+        <div class="color-role">Текст на тёмном</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F2F0FF;"></div>
+      <div class="color-info">
+        <div class="color-name">Ghost White</div>
+        <div class="color-hex">#F2F0FF</div>
+        <div class="color-role">Основной текст</div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:24px; font-size:13px;">💡 При создании постов и баннеров в Canva вводи эти HEX-коды вручную в палитру — результат будет единообразным на всех площадках.</p>
+</section>
+
+<!-- 4. ТИПОГРАФИКА -->
+<section>
+  <div class="section-label">04 — Типографика</div>
+  <h2>Шрифты</h2>
+
+  <div class="typo-block">
+    <div class="typo-sample-heading">Syne — заголовки</div>
+    <div class="typo-meta">
+      <div class="typo-meta-item"><label>Использование</label><span>Заголовки, кнопки, акценты</span></div>
+      <div class="typo-meta-item"><label>Насыщенность</label><span>700 / 800</span></div>
+      <div class="typo-meta-item"><label>Где взять</label><span>fonts.google.com → Syne</span></div>
+    </div>
+  </div>
+
+  <div class="typo-block">
+    <div class="typo-sample-body" style="font-size:17px;">Manrope — основной текст постов, описаний и интерфейса</div>
+    <div class="typo-meta">
+      <div class="typo-meta-item"><label>Использование</label><span>Тело текста, подписи</span></div>
+      <div class="typo-meta-item"><label>Насыщенность</label><span>300 / 400 / 500</span></div>
+      <div class="typo-meta-item"><label>Где взять</label><span>fonts.google.com → Manrope</span></div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;">💡 В Canva: вместо Syne можно использовать <strong style="color:var(--violet-light)">Space Grotesk Bold</strong>, вместо Manrope — <strong style="color:var(--violet-light)">DM Sans</strong>. Оба есть в бесплатной версии Canva.</p>
+</section>
+
+<!-- 5. ЛОГОТИП -->
+<section>
+  <div class="section-label">05 — Логотип</div>
+  <h2>Правила использования</h2>
+  <div class="do-dont">
+    <div class="do-block">
+      <div class="block-label">Правильно ✓</div>
+      <ul>
+        <li>На тёмном (чёрном / тёмно-фиолетовом) фоне</li>
+        <li>С достаточным отступом вокруг</li>
+        <li>Пропорции не изменены</li>
+        <li>Чёткое, не размытое</li>
+      </ul>
+    </div>
+    <div class="dont-block">
+      <div class="block-label">Нельзя ✗</div>
+      <ul>
+        <li>На белом или светлом фоне</li>
+        <li>Растянуто / сжато</li>
+        <li>Поверх пёстрого фона</li>
+        <li>Изменены цвета логотипа</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:20px;">
+    <div class="logo-note">
+      <div class="logo-icon">⚡</div>
+      <div>
+        <h3 style="margin-bottom:8px;">Важно: сделай PNG с прозрачным фоном</h3>
+        <p style="margin:0;">Твой логотип сейчас в JPEG — это значит, он всегда с белым или чёрным фоном. Загрузи его в <strong style="color:var(--violet-light)">remove.bg</strong> или прямо в FoxVision AI (удаление фона) — и получишь PNG с прозрачным фоном. Это нужно для баннеров, постов и мокапов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ТОН ГОЛОСА -->
+<section>
+  <div class="section-label">06 — Тон общения</div>
+  <h2>Голос бренда</h2>
+  <div class="card" style="margin-bottom:20px;">
+    <p style="font-size:15px; color:var(--white);">FoxVision AI говорит с аудиторией как <strong>умный современный друг</strong> — на «ты», без пафоса и канцелярита. Технологичный, но живой.</p>
+  </div>
+  <h3 style="margin-bottom:12px;">Мы говорим ТАК:</h3>
+  <div class="tags">
+    <span class="tag tag-yes">Современно</span>
+    <span class="tag tag-yes">На «ты»</span>
+    <span class="tag tag-yes">Коротко и по делу</span>
+    <span class="tag tag-yes">С заботой</span>
+    <span class="tag tag-yes">Уверенно</span>
+    <span class="tag tag-yes">Иногда с лёгким юмором</span>
+  </div>
+  <h3 style="margin-top:28px; margin-bottom:12px;">Мы НЕ говорим так:</h3>
+  <div class="tags">
+    <span class="tag tag-no">Уважаемый клиент</span>
+    <span class="tag tag-no">Наша компания рада предложить</span>
+    <span class="tag tag-no">Высококачественные услуги</span>
+    <span class="tag tag-no">Обращайтесь к нам</span>
+  </div>
+
+  <div class="vdivider"></div>
+  <h3 style="margin-bottom:16px;">Примеры правильного тона</h3>
+  <div class="do-dont">
+    <div class="do-block">
+      <div class="block-label">Правильно</div>
+      <ul>
+        <li>«Просто отправь фото — мы сделаем остальное»</li>
+        <li>«Результат за пару минут, без лишних кликов»</li>
+        <li>«Попробуй — первые 210 звёзд бесплатно»</li>
+      </ul>
+    </div>
+    <div class="dont-block">
+      <div class="block-label">Неправильно</div>
+      <ul>
+        <li>«Воспользуйтесь нашим сервисом»</li>
+        <li>«Мы предоставляем услуги по обработке изображений»</li>
+        <li>«Добро пожаловать в FoxVision AI!»</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ПЛАТФОРМЫ -->
+<section>
+  <div class="section-label">07 — Платформы</div>
+  <h2>Где и что писать</h2>
+  <p style="margin-bottom:28px;">FoxVision AI работает на двух равноценных площадках — Telegram и ВКонтакте. Контент и тон адаптируются под каждую, но стиль и визуал остаются едиными.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h3>🤖 Telegram-бот (@foxvisionai_bot)</h3>
+      <p>Основной инструмент обработки фото. Чёткие короткие инструкции в интерфейсе. Пользователь должен сразу понять что нажать и что получит. Никаких длинных текстов внутри бота.</p>
+    </div>
+    <div class="card">
+      <h3>📣 Telegram-канал (@foxvision_ai)</h3>
+      <p>Контент 2 раза в день. Примеры работ, до/после, советы, акции. Тон — живой, современный, с эмодзи. Ведёт аудиторию в бот.</p>
+    </div>
+    <div class="card">
+      <h3>📘 ВКонтакте (vk.com/foxvisionai)</h3>
+      <p>Равноценная площадка. Заказы принимаются напрямую через сообщения группы, оплата через СБП. Посты — примеры работ, услуги, отзывы. Тон тот же, аудитория может быть чуть старше.</p>
+    </div>
+    <div class="card">
+      <h3>🌐 Сайт (лендинг)</h3>
+      <p>Витрина бренда. УТП на первом экране. Примеры работ. Два чётких CTA: «Открыть бота» и «Написать ВКонтакте» — обе площадки равнозначно.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;">
+    <div class="logo-note">
+      <div class="logo-icon">💳</div>
+      <div>
+        <h3 style="margin-bottom:8px;">Оплата на двух площадках</h3>
+        <p style="margin:0;">Telegram — Telegram Stars (⭐) внутри бота. ВКонтакте — оплата через СБП на карту (+7 911 654-44-84, Сбербанк/Тинькофф). Оба способа одинаково активно продвигаются.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>FoxVision AI</strong> · Брендбук v1.0<br>
+  <span style="font-size:11px; margin-top:8px; display:block;">Обновляй документ по мере развития бренда</span>
+</div>
+
+</body>
+</html>
