@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoxVision AI — Инфографики</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090F;
+    --surface: #111119;
+    --surface2: #18181F;
+    --border: #2A2A3A;
+    --border2: #1E1E2E;
+    --violet: #7C3AED;
+    --violet-mid: #9D5CF6;
+    --violet-light: #C4A0FF;
+    --white: #F2F0FF;
+    --grey: #7A7A9A;
+    --grey-light: #B0AECB;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #06060C;
+    font-family: 'Manrope', sans-serif;
+    color: var(--white);
+    padding: 40px 20px;
+  }
+  .page-title {
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    text-align: center;
+    color: var(--grey);
+    font-size: 13px;
+    margin-bottom: 50px;
+  }
+  .page-sub span { color: var(--violet-light); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .wrap { display:flex; flex-direction:column; gap:12px; }
+  .wrap-meta { display:flex; align-items:center; gap:10px; }
+  .num {
+    width:26px; height:26px; border-radius:7px;
+    background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.5);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Syne',sans-serif; font-size:11px; font-weight:800; color:var(--violet-light);
+  }
+  .wrap-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--white); }
+  .wrap-hint { font-size:12px; color:var(--grey); margin-left:36px; line-height:1.5; }
+
+  /* КВАДРАТ */
+  .sq {
+    width:100%; aspect-ratio:1/1;
+    background:var(--bg); border-radius:20px;
+    border:1px solid var(--border); overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .sq-header {
+    padding:18px 22px 14px; border-bottom:1px solid var(--border2);
+    flex-shrink:0; text-align:center;
+  }
+  .sq-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--violet-light); font-weight:600; margin-bottom:5px; }
+  .sq-title { font-family:'Syne',sans-serif; font-size:21px; font-weight:800; color:var(--white); line-height:1.15; }
+  .sq-title span { color:var(--violet-mid); }
+  .sq-footer {
+    padding:10px 22px; flex-shrink:0; margin-top:auto;
+    background:linear-gradient(135deg,rgba(124,58,237,0.12),transparent);
+    border-top:1px solid rgba(124,58,237,0.2);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .sq-brand { font-family:'Syne',sans-serif; font-size:13px; font-weight:800; color:var(--violet-light); }
+  .sq-links { font-size:10px; color:var(--grey); text-align:right; line-height:1.6; }
+
+  /* ===== 1. СРАВНЕНИЕ ===== */
+  .cols-hd {
+    display:grid; grid-template-columns:1.3fr 1fr 1fr;
+    padding:9px 16px; background:var(--surface);
+    border-bottom:1px solid var(--border2); flex-shrink:0;
+  }
+  .col-h { font-family:'Syne',sans-serif; font-size:11px; font-weight:800; text-align:center; }
+  .col-h.cr { color:var(--grey); font-size:9px; letter-spacing:2px; text-transform:uppercase; text-align:left; }
+  .col-h.fx { color:var(--violet-light); }
+  .col-h.ph { color:var(--grey); }
+  .rows { padding:4px 10px; flex:1; display:flex; flex-direction:column; justify-content:space-evenly; }
+  .row { display:grid; grid-template-columns:1.3fr 1fr 1fr; padding:7px 8px; border-radius:7px; align-items:center; }
+  .row.hl { background:rgba(124,58,237,0.08); }
+  .cell { text-align:center; font-size:12px; }
+  .cell.cr-c { text-align:left; color:var(--grey-light); font-weight:500; font-size:12px; display:flex; align-items:center; gap:4px; }
+  .cell.fx-c { color:var(--white); font-weight:700; font-size:12px; }
+  .cell.ph-c { color:var(--grey); font-size:12px; }
+  .yes { color:var(--violet-light); font-weight:800; margin-right:2px; }
+  .no  { color:#FF6B6B; font-weight:800; margin-right:2px; }
+
+  /* ===== 2. ТАРИФЫ ===== */
+  .tariffs { flex:1; padding:10px 16px 6px; display:flex; flex-direction:column; gap:6px; overflow:hidden; }
+  .welcome {
+    background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(157,92,246,0.08));
+    border:1px solid rgba(124,58,237,0.35); border-radius:10px;
+    padding:9px 14px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+  }
+  .welcome-t { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:var(--white); }
+  .welcome-t span { color:var(--violet-light); }
+  .welcome-sub { font-size:9px; color:var(--grey-light); margin-top:1px; }
+  .welcome-badge { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:var(--violet-light); }
+  .section-lbl { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--grey); }
+  .t-grid { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+  .t-item { background:var(--surface); border:1px solid var(--border2); border-radius:8px; padding:8px 10px; display:flex; align-items:center; gap:7px; }
+  .t-item.ac { background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.35); }
+  .t-emoji { font-size:14px; flex-shrink:0; }
+  .t-name { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; color:var(--white); }
+  .t-price { font-size:10px; font-weight:700; color:var(--violet-light); }
+  .t-price-rub { font-size:10px; font-weight:700; color:var(--grey-light); }
+
+  /* ===== 3. ИНСТРУМЕНТЫ ===== */
+  .tools { flex:1; padding:10px 16px 6px; display:flex; flex-direction:column; gap:6px; }
+  .tg-note { background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.2); border-radius:8px; padding:8px 12px; font-size:10px; color:var(--grey-light); text-align:center; flex-shrink:0; }
+  .tg-note strong { color:var(--violet-light); }
+  .tools-grid { display:grid; grid-template-columns:1fr 1fr; gap:5px; flex:1; }
+  .tool { background:var(--surface); border:1px solid var(--border2); border-radius:8px; padding:9px 10px; display:flex; align-items:center; gap:8px; }
+  .tool-icon { width:26px; height:26px; border-radius:6px; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.3); display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+  .tool-name { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; color:var(--white); margin-bottom:1px; }
+  .tool-price { font-size:10px; font-weight:700; color:var(--violet-light); }
+
+  /* ===== 4. ВК ===== */
+  .vk-body { flex:1; padding:10px 16px 6px; display:flex; flex-direction:column; gap:7px; }
+  .vk-grid { display:grid; grid-template-columns:1fr 1fr; gap:5px; flex:1; }
+  .vk-item { background:var(--surface); border:1px solid var(--border2); border-radius:8px; padding:11px 12px; display:flex; flex-direction:column; justify-content:space-between; }
+  .vk-item.wide { grid-column:span 2; flex-direction:row; align-items:center; gap:12px; }
+  .vk-item.ac { background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.35); }
+  .vk-emoji { font-size:20px; margin-bottom:5px; }
+  .vk-name { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:var(--white); margin-bottom:3px; }
+  .vk-desc { font-size:10px; color:var(--grey); line-height:1.4; margin-bottom:5px; }
+  .vk-price { font-size:13px; font-weight:800; color:var(--violet-light); font-family:'Syne',sans-serif; }
+  .vk-sbp { background:rgba(0,150,80,0.1); border:1px solid rgba(0,150,80,0.25); border-radius:8px; padding:9px 14px; text-align:center; flex-shrink:0; }
+  .vk-sbp-title { font-family:'Syne',sans-serif; font-size:12px; font-weight:800; color:#4ADE80; margin-bottom:1px; }
+  .vk-sbp-sub { font-size:10px; color:var(--grey-light); }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">FoxVision AI — Инфографики</h1>
+<p class="page-sub">4 квадратных шаблона · <span>скриншоть или переноси в Canva</span></p>
+
+<div class="grid">
+
+  <!-- 1. СРАВНЕНИЕ -->
+  <div class="wrap">
+    <div class="wrap-meta"><div class="num">1</div><div class="wrap-title">Сравнение с фотографом</div></div>
+    <div class="sq">
+      <div class="sq-header">
+        <div class="sq-label">Сравнение</div>
+        <div class="sq-title">FoxVision AI <span>vs</span> Фотограф</div>
+      </div>
+      <div class="cols-hd">
+        <div class="col-h cr">Критерий</div>
+        <div class="col-h fx">🦊 FoxVision</div>
+        <div class="col-h ph">📷 Фотограф</div>
+      </div>
+      <div class="rows">
+        <div class="row hl"><div class="cell cr-c">💰 Цена</div><div class="cell fx-c"><span class="yes">✓</span>от 2 рублей</div><div class="cell ph-c"><span class="no">✗</span>3–15 000₽</div></div>
+        <div class="row"><div class="cell cr-c">⏱ Скорость</div><div class="cell fx-c"><span class="yes">✓</span>1–2 минуты</div><div class="cell ph-c"><span class="no">✗</span>Дни ожидания</div></div>
+        <div class="row hl"><div class="cell cr-c">📍 Где угодно</div><div class="cell fx-c"><span class="yes">✓</span>С телефона</div><div class="cell ph-c"><span class="no">✗</span>Ехать в студию</div></div>
+        <div class="row"><div class="cell cr-c">🎨 Стили</div><div class="cell fx-c"><span class="yes">✓</span>Любой образ</div><div class="cell ph-c"><span class="no">✗</span>Ограничено</div></div>
+        <div class="row hl"><div class="cell cr-c">🔄 Повтор</div><div class="cell fx-c"><span class="yes">✓</span>Сколько угодно</div><div class="cell ph-c"><span class="no">✗</span>Платить снова</div></div>
+        <div class="row"><div class="cell cr-c">😰 Стресс</div><div class="cell fx-c"><span class="yes">✓</span>Ноль нервов</div><div class="cell ph-c"><span class="no">✗</span>Позировать</div></div>
+        <div class="row hl"><div class="cell cr-c">📱 Удобство</div><div class="cell fx-c"><span class="yes">✓</span>TG + ВКонтакте</div><div class="cell ph-c"><span class="no">✗</span>Договариваться</div></div>
+      </div>
+      <div class="sq-footer">
+        <div class="sq-brand">FoxVision AI</div>
+        <div class="sq-links">@foxvisionai_bot · vk.com/foxvisionai</div>
+      </div>
+    </div>
+    <p class="wrap-hint">Публикуй на обеих площадках. Отлично работает на холодную аудиторию.</p>
+  </div>
+
+  <!-- 2. ТАРИФЫ -->
+  <div class="wrap">
+    <div class="wrap-meta"><div class="num">2</div><div class="wrap-title">Тарифы и цены</div></div>
+    <div class="sq">
+      <div class="sq-header">
+        <div class="sq-label">Цены</div>
+        <div class="sq-title">Что умеет <span>FoxVision AI</span></div>
+      </div>
+      <div class="tariffs">
+        <div class="welcome">
+          <div><div class="welcome-t">🎁 Бонус при регистрации: <span>210 ⭐</span></div><div class="welcome-sub">Только Telegram · попробуй бесплатно</div></div>
+          <div class="welcome-badge">FREE</div>
+        </div>
+        <div class="section-lbl">Telegram Stars (⭐)</div>
+        <div class="t-grid">
+          <div class="t-item ac"><div class="t-emoji">✏️</div><div><div class="t-name">Редактирование</div><div class="t-price">50 ⭐</div></div></div>
+          <div class="t-item ac"><div class="t-emoji">✨</div><div><div class="t-name">Про-редактирование</div><div class="t-price">100 ⭐</div></div></div>
+          <div class="t-item"><div class="t-emoji">🎨</div><div><div class="t-name">Стилизация</div><div class="t-price">30 ⭐</div></div></div>
+          <div class="t-item"><div class="t-emoji">✂️</div><div><div class="t-name">Удаление фона</div><div class="t-price">5 ⭐</div></div></div>
+          <div class="t-item"><div class="t-emoji">🖼</div><div><div class="t-name">Коллаж</div><div class="t-price">5 ⭐</div></div></div>
+          <div class="t-item"><div class="t-emoji">💌</div><div><div class="t-name">Открытка</div><div class="t-price">15 ⭐</div></div></div>
+        </div>
+        <div class="section-lbl">ВКонтакте (рубли)</div>
+        <div class="t-grid">
+          <div class="t-item"><div class="t-emoji">🔄</div><div><div class="t-name">Замена фона</div><div class="t-price-rub">100 ₽</div></div></div>
+          <div class="t-item"><div class="t-emoji">✏️</div><div><div class="t-name">Редактирование</div><div class="t-price-rub">150 ₽</div></div></div>
+          <div class="t-item"><div class="t-emoji">💫</div><div><div class="t-name">Трансформация</div><div class="t-price-rub">250 ₽</div></div></div>
+          <div class="t-item ac"><div class="t-emoji">📸</div><div><div class="t-name">AI-фотосессия</div><div class="t-price-rub">TBD</div></div></div>
+        </div>
+      </div>
+      <div class="sq-footer">
+        <div class="sq-brand">FoxVision AI</div>
+        <div class="sq-links">@foxvisionai_bot · vk.com/foxvisionai</div>
+      </div>
+    </div>
+    <p class="wrap-hint">Публикуй на обеих площадках раз в месяц или при изменении цен.</p>
+  </div>
+
+  <!-- 3. ИНСТРУМЕНТЫ TG -->
+  <div class="wrap">
+    <div class="wrap-meta"><div class="num">3</div><div class="wrap-title">Инструменты бота — Telegram</div></div>
+    <div class="sq">
+      <div class="sq-header">
+        <div class="sq-label">Telegram · @foxvisionai_bot</div>
+        <div class="sq-title">Всё что умеет <span>бот</span></div>
+      </div>
+      <div class="tools">
+        <div class="tg-note"><strong>🎁 210 ⭐ бесплатно</strong> при регистрации · оплата Telegram Stars</div>
+        <div class="tools-grid">
+          <div class="tool"><div class="tool-icon">✏️</div><div><div class="tool-name">Редактирование</div><div class="tool-price">50 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">✨</div><div><div class="tool-name">Про-редактирование</div><div class="tool-price">100 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">✂️</div><div><div class="tool-name">Удаление фона</div><div class="tool-price">5 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">⬆️</div><div><div class="tool-name">Улучшение качества</div><div class="tool-price">5 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">🎨</div><div><div class="tool-name">Стилизация</div><div class="tool-price">30 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">🖼</div><div><div class="tool-name">Коллаж</div><div class="tool-price">5 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">💌</div><div><div class="tool-name">Открытка</div><div class="tool-price">15 ⭐</div></div></div>
+          <div class="tool"><div class="tool-icon">🔮</div><div><div class="tool-name">Гороскоп</div><div class="tool-price">25 ⭐</div></div></div>
+        </div>
+      </div>
+      <div class="sq-footer">
+        <div class="sq-brand">FoxVision AI</div>
+        <div class="sq-links">@foxvisionai_bot</div>
+      </div>
+    </div>
+    <p class="wrap-hint">Публикуй в Telegram-канале для новых подписчиков или при добавлении инструмента.</p>
+  </div>
+
+  <!-- 4. ВК -->
+  <div class="wrap">
+    <div class="wrap-meta"><div class="num">4</div><div class="wrap-title">Услуги ВКонтакте</div></div>
+    <div class="sq">
+      <div class="sq-header">
+        <div class="sq-label">ВКонтакте · vk.com/foxvisionai</div>
+        <div class="sq-title">Услуги и цены <span>во ВКонтакте</span></div>
+      </div>
+      <div class="vk-body">
+        <div class="vk-grid">
+          <div class="vk-item ac wide">
+            <div style="font-size:30px; flex-shrink:0;">📸</div>
+            <div style="flex:1;">
+              <div class="vk-name" style="font-size:13px;">AI-фотосессия</div>
+              <div class="vk-desc">6 профессиональных фото из твоих селфи — разные образы, фоны, стили</div>
+              <div class="vk-price">Цена уточняется</div>
+            </div>
+          </div>
+          <div class="vk-item">
+            <div class="vk-emoji">🔄</div>
+            <div class="vk-name">Замена фона</div>
+            <div class="vk-price">100 ₽</div>
+          </div>
+          <div class="vk-item">
+            <div class="vk-emoji">✏️</div>
+            <div class="vk-name">Редактирование</div>
+            <div class="vk-price">150 ₽</div>
+          </div>
+          <div class="vk-item wide">
+            <div style="font-size:26px; flex-shrink:0;">💫</div>
+            <div style="flex:1;">
+              <div class="vk-name">Полная трансформация</div>
+              <div class="vk-desc">Кардинальное изменение образа и стиля</div>
+              <div class="vk-price">250 ₽</div>
+            </div>
+          </div>
+        </div>
+        <div class="vk-sbp">
+          <div class="vk-sbp-title">💳 Оплата СБП</div>
+          <div class="vk-sbp-sub">Сбербанк · Тинькофф</div>
+        </div>
+      </div>
+      <div class="sq-footer">
+        <div class="sq-brand">FoxVision AI</div>
+        <div class="sq-links">vk.com/foxvisionai</div>
+      </div>
+    </div>
+    <p class="wrap-hint">Закрепи в группе ВК. Когда сделаешь QR-коды — вставишь вместо блока «Оплата СБП».</p>
+  </div>
+
+</div>
+</body>
+</html>
